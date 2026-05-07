@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --green: #5dc93e;
+  --navy: #1a2547;
+  --navy-mid: #243060;
+  --surface: #f0f7ec;
+  --border: #d1e8c8;
+  --muted: #5a6a82;
+
+  --background: 0 0% 100%;
+  --foreground: 222 47% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 18%;
+  --primary: 108 59% 51%;
+  --primary-foreground: 222 47% 18%;
+  --secondary: 222 47% 18%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 214 32% 45%;
+  --muted-foreground: 214 32% 45%;
+  --accent: 108 45% 93%;
+  --accent-foreground: 222 47% 18%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 120 40% 80%;
+  --input: 120 40% 80%;
+  --ring: 108 59% 51%;
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--navy);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Skeleton animation */
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.skeleton {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  background: var(--border);
+  border-radius: 8px;
+}
