@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Sidebar } from "@/components/pivo/sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import type { UserRow } from "@/lib/supabase/types";
