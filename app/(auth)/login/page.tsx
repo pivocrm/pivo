@@ -67,8 +67,20 @@ export default function LoginPage() {
 
   return (
     <>
-      <div className="min-h-screen flex">
-        {/* Lado esquerdo — navy */}
+      <div className="min-h-screen flex flex-col lg:flex-row">
+        {/* Mobile header — navy com hero image */}
+        <div className="lg:hidden bg-[#1A2547] w-full flex justify-center items-center py-6 px-6">
+          <Image
+            src="/hero-login.png"
+            alt="Pivo"
+            width={280}
+            height={147}
+            className="object-contain"
+            style={{ mixBlendMode: "screen" }}
+          />
+        </div>
+
+        {/* Lado esquerdo — navy (desktop) */}
         <div className="hidden lg:flex lg:w-1/2 bg-[#1A2547] flex-col justify-between p-12">
           <div>
             {/* Hero */}
@@ -114,18 +126,6 @@ export default function LoginPage() {
         {/* Lado direito — formulário */}
         <div className="flex-1 flex items-center justify-center p-6 bg-white">
           <div className="w-full max-w-sm">
-            {/* Mobile logo */}
-            <div className="mb-8 lg:hidden">
-              <div className="bg-[#1A2547] rounded-2xl p-2 inline-flex">
-                <Image
-                  src="/logo.png"
-                  alt="Pivo"
-                  width={72}
-                  height={60}
-                  className="object-contain"
-                />
-              </div>
-            </div>
 
             <div className="mb-8">
               <h2 className="font-nunito text-2xl font-black text-[#1A2547] mb-1">
