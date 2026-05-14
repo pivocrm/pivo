@@ -13,9 +13,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Eye, EyeOff, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const BENEFITS = [
-  "14 dias grátis — sem cartão de crédito",
-  "Pipeline de campanhas visual e intuitivo",
-  "Media Kit profissional em minutos",
+  "Pipeline de campanhas estilo Kanban — zero planilha",
+  "Controle financeiro simplificado em um só lugar",
+  "Visualização prática de todas as propostas e contratos",
 ];
 
 export default function CadastroPage() {
@@ -32,7 +32,7 @@ export default function CadastroPage() {
 
   async function handleCadastro(e: React.FormEvent) {
     e.preventDefault();
-    if (!name || !email || !password) return;
+    if (!name || !email || !instagramHandle || !password) return;
     if (password.length < 8) {
       toast({ variant: "destructive", title: "Senha muito curta", description: "A senha deve ter pelo menos 8 caracteres." });
       return;
@@ -144,12 +144,12 @@ export default function CadastroPage() {
 
             <form onSubmit={handleCadastro} className="space-y-4">
               <div className="space-y-1.5">
-                <Label htmlFor="name">Nome artístico *</Label>
+                <Label htmlFor="name">Nome *</Label>
                 <Input
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Como você é conhecido"
+                  placeholder="Seu nome"
                   required
                 />
               </div>
@@ -168,7 +168,7 @@ export default function CadastroPage() {
               </div>
 
               <div className="space-y-1.5">
-                <Label htmlFor="instagram">Instagram (opcional)</Label>
+                <Label htmlFor="instagram">Instagram *</Label>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#5A6A82] text-sm">@</span>
                   <Input
@@ -177,6 +177,7 @@ export default function CadastroPage() {
                     onChange={(e) => setInstagramHandle(e.target.value.replace("@", ""))}
                     placeholder="seuhandle"
                     className="pl-7"
+                    required
                   />
                 </div>
               </div>
