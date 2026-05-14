@@ -95,28 +95,14 @@ export default function CadastroPage() {
         {/* Lado esquerdo — navy (desktop) */}
         <div className="hidden lg:flex lg:w-1/2 bg-[#1A2547] flex-col justify-between p-12">
           <div>
-            {/* Mascote + Logo */}
-            <div className="mb-10 flex items-center">
-              <div className="relative w-52 h-52 flex-shrink-0">
-                <Image
-                  src="/mascote.png"
-                  alt="Mascote Pivo"
-                  fill
-                  className="object-contain"
-                />
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: "radial-gradient(ellipse at center, transparent 38%, #1A2547 68%)"
-                  }}
-                />
-              </div>
+            {/* Hero */}
+            <div className="mb-4">
               <Image
-                src="/logo.png"
+                src="/hero-login.png"
                 alt="Pivo"
-                width={200}
-                height={110}
-                className="object-contain -ml-6"
+                width={320}
+                height={168}
+                className="object-contain"
                 style={{ mixBlendMode: "screen" }}
               />
             </div>
