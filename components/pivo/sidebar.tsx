@@ -12,7 +12,10 @@ import {
   Settings,
   LogOut,
   Loader2,
+  ShieldCheck,
 } from "lucide-react";
+
+const ADMIN_EMAIL = "pivocrm@gmail.com";
 import { cn, getDaysRemaining } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 import type { UserRow } from "@/lib/supabase/types";
@@ -40,8 +43,9 @@ export function Sidebar({ user, onClose }: SidebarProps) {
     setPendingHref(null);
   }, [pathname]);
 
+  const isAdmin = user.email === ADMIN_EMAIL;
   const trialDays = user.trial_ends_at ? getDaysRemaining(user.trial_ends_at) : 0;
-  const isTrialActive = trialDays > 0 && user.plan === "creator";
+  const isTrialActive = trialDays > 0 && user.plan === "creator" && !isAdmin;
   const trialProgress = Math.max(0, Math.min(100, (trialDays / 14) * 100));
 
   const initials = user.name
@@ -105,7 +109,10 @@ export function Sidebar({ user, onClose }: SidebarProps) {
 
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-1">
-        {NAV_ITEMS.map(({ href, label, icon: Icon, exact }) => {
+        {[
+          ...NAV_ITEMS,
+          ...(isAdmin ? [{ href: "/dashboard/admin", label: "Admin", icon: ShieldCheck, exact: false }] : []),
+        ].map(({ href, label, icon: Icon, exact }) => {
           const active = isActive(href, exact);
           const pending = pendingHref === href;
           return (
