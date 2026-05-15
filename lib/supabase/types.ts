@@ -210,6 +210,17 @@ export interface Database {
           contact_email: string | null;
           is_public: boolean;
           slug: string;
+          city: string | null;
+          state: string | null;
+          niches: string[];
+          content_types: string[];
+          language: string | null;
+          audience_gender_female: number | null;
+          audience_age_range: string | null;
+          audience_states: string[];
+          past_brands: string[];
+          average_fee: number | null;
+          show_fee: boolean;
         };
         Insert: {
           id?: string;
@@ -222,6 +233,17 @@ export interface Database {
           contact_email?: string | null;
           is_public?: boolean;
           slug: string;
+          city?: string | null;
+          state?: string | null;
+          niches?: string[];
+          content_types?: string[];
+          language?: string | null;
+          audience_gender_female?: number | null;
+          audience_age_range?: string | null;
+          audience_states?: string[];
+          past_brands?: string[];
+          average_fee?: number | null;
+          show_fee?: boolean;
         };
         Update: {
           id?: string;
@@ -234,6 +256,17 @@ export interface Database {
           contact_email?: string | null;
           is_public?: boolean;
           slug?: string;
+          city?: string | null;
+          state?: string | null;
+          niches?: string[];
+          content_types?: string[];
+          language?: string | null;
+          audience_gender_female?: number | null;
+          audience_age_range?: string | null;
+          audience_states?: string[];
+          past_brands?: string[];
+          average_fee?: number | null;
+          show_fee?: boolean;
         };
       };
     };
