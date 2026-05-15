@@ -57,11 +57,11 @@ export function ConfiguracoesClient({ profile, userId }: { profile: UserRow | nu
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Perfil público</CardTitle>
+          <CardTitle className="text-base">Perfil</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-1.5">
-            <Label>Nome artístico</Label>
+            <Label>Nome</Label>
             <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Seu nome" />
           </div>
           <div className="space-y-1.5">
