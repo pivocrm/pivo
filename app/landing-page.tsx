@@ -11,17 +11,14 @@ import {
   Kanban,
   FileText,
   DollarSign,
-  BarChart2,
   Monitor,
   UserPlus,
   PlusCircle,
   TrendingUp,
   Check,
-  Shield,
   CreditCard,
   X,
   Instagram,
-  Linkedin,
   Menu,
   ChevronRight,
   ChevronDown,
@@ -521,18 +518,10 @@ function TestimonialsSection() {
               style={{ background: "#fff", borderRadius: 16, borderLeft: "3px solid #5DC93E", padding: "32px 28px", boxShadow: "0 4px 24px rgba(26,37,71,0.08)", position: "relative" }}
               whileHover={{ y: -4, boxShadow: "0 12px 40px rgba(26,37,71,0.14)" }}>
               <div style={{ position: "absolute", top: 16, right: 20, fontSize: "5rem", lineHeight: 1, color: "rgba(93,201,62,0.12)", fontFamily: "Nunito, sans-serif", fontWeight: 900, userSelect: "none" }}>"</div>
-              <div style={{ display: "flex", gap: 4, marginBottom: 16 }}>
+              <div style={{ display: "flex", gap: 4, marginBottom: 20 }}>
                 {[...Array(5)].map((_, s) => <span key={s} style={{ color: "#5DC93E", fontSize: "0.875rem" }}>★</span>)}
               </div>
-              <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#374151", lineHeight: 1.7, fontSize: "1rem", marginBottom: 24 }}>"{t.text}"</p>
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 48, height: 48, borderRadius: "50%", background: t.color, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Nunito, sans-serif", fontWeight: 700, fontSize: "1.125rem", color: "#fff" }}>{t.initial}</div>
-                <div>
-                  <div style={{ fontFamily: "Nunito, sans-serif", fontWeight: 700, fontSize: "0.9375rem", color: "#1A2547" }}>{t.name}</div>
-                  <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "0.8125rem", color: "#6B7A99" }}>{t.handle}</div>
-                  <span style={{ display: "inline-block", marginTop: 4, background: "rgba(93,201,62,0.1)", color: "#5DC93E", fontSize: "0.75rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, padding: "2px 8px", borderRadius: 9999 }}>{t.niche}</span>
-                </div>
-              </div>
+              <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#374151", lineHeight: 1.75, fontSize: "1.0625rem", margin: 0 }}>"{t.text}"</p>
             </motion.div>
           ))}
         </div>
@@ -543,61 +532,48 @@ function TestimonialsSection() {
 
 // ─── PRICING ───────────────────────────────────────────────────────────────────
 function PricingSection() {
-  const [annual, setAnnual] = useState(false);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const plans = [
-    { name: "Creator", price: annual ? "R$157" : CONFIG.creatorPrice, tagline: "Para criadores independentes", highlight: false, features: ["Pipeline ilimitado de campanhas", "Media Kit dinâmico com link público", "Controle financeiro completo", "Gestão de contratos", "Até 3 usuários", "Suporte por chat"], cta: "Começar grátis por 7 dias", ctaUrl: CONFIG.ctaUrl },
-    { name: "Agency", price: annual ? "R$557" : CONFIG.agencyPrice, tagline: "Para assessorias de influência", highlight: true, badge: "Mais popular", features: ["Tudo do Creator", "Criadores ilimitados na carteira", "Dashboard centralizado por criador", "Relatórios por carteira", "Revenue share com criadores", "Suporte prioritário"], cta: "Começar grátis por 7 dias", ctaUrl: CONFIG.ctaUrl },
-    { name: "Agency Pro", price: annual ? "R$1.197" : CONFIG.agencyProPrice, tagline: "Para assessorias em escala", highlight: false, features: ["Tudo do Agency", "White-label (sua marca)", "API de integração", "Suporte dedicado", "SLA garantido", "Onboarding personalizado"], cta: "Falar com time comercial", ctaUrl: "mailto:comercial@pivo.com.br" },
-  ];
   return (
     <section id="precos" style={{ background: "#F7F9FC", padding: "96px 24px" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <motion.div ref={ref} variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"} style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{ color: "#5DC93E", fontSize: "0.8125rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 16 }}>Planos</div>
           <h2 style={{ fontFamily: "Nunito, sans-serif", fontWeight: 800, color: "#1A2547", fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", marginBottom: 12 }}>Simples. Transparente. Sem surpresa.</h2>
-          <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#6B7A99", fontSize: "1.125rem", marginBottom: 32 }}>{CONFIG.trialDays} dias grátis em qualquer plano. Cancele quando quiser.</p>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
-            <span style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 500, color: !annual ? "#1A2547" : "#6B7A99", fontSize: "0.9375rem" }}>Mensal</span>
-            <button onClick={() => setAnnual(!annual)} aria-label="Alternar entre mensal e anual" style={{ width: 52, height: 28, borderRadius: 9999, background: annual ? "#5DC93E" : "#E2E8F0", border: "none", cursor: "pointer", position: "relative", transition: "background 0.3s" }}>
-              <div style={{ width: 22, height: 22, borderRadius: "50%", background: "#fff", position: "absolute", top: 3, left: annual ? 27 : 3, transition: "left 0.3s", boxShadow: "0 1px 4px rgba(0,0,0,0.2)" }} />
-            </button>
-            <span style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "Space Grotesk, sans-serif", fontWeight: 500, color: annual ? "#1A2547" : "#6B7A99", fontSize: "0.9375rem" }}>
-              Anual <span style={{ background: "#5DC93E", color: "#0F1A35", fontSize: "0.75rem", fontWeight: 700, padding: "2px 8px", borderRadius: 9999 }}>Economize {CONFIG.annualDiscount}</span>
-            </span>
-          </div>
+          <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#6B7A99", fontSize: "1.125rem" }}>{CONFIG.trialDays} dias grátis. Cancele quando quiser.</p>
         </motion.div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, alignItems: "start" }}>
-          {plans.map((plan, i) => (
-            <motion.div key={plan.name} variants={stagger(i)} initial="hidden" animate={inView ? "visible" : "hidden"}
-              style={{ background: plan.highlight ? "#1A2547" : "#fff", borderRadius: 16, border: plan.highlight ? "2px solid #5DC93E" : "1.5px solid #E2E8F0", padding: "36px 28px", position: "relative", transform: plan.highlight ? "scale(1.03)" : "scale(1)", boxShadow: plan.highlight ? "0 0 40px rgba(93,201,62,0.2), 0 12px 40px rgba(26,37,71,0.2)" : "0 4px 24px rgba(26,37,71,0.06)", transition: "box-shadow 0.25s" }}
-              whileHover={{ boxShadow: plan.highlight ? "0 0 60px rgba(93,201,62,0.35)" : "0 12px 40px rgba(26,37,71,0.12)" }}>
-              {plan.badge && <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: "#5DC93E", color: "#0F1A35", padding: "4px 16px", borderRadius: 9999, fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, fontSize: "0.8125rem", whiteSpace: "nowrap" }}>{plan.badge}</div>}
-              <div style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, fontSize: "0.875rem", color: "#5DC93E", letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 8 }}>{plan.name}</div>
-              <div style={{ fontFamily: "Nunito, sans-serif", fontWeight: 900, fontSize: "2.5rem", color: plan.highlight ? "#fff" : "#1A2547", lineHeight: 1, marginBottom: 4 }}>
-                {plan.price}<span style={{ fontSize: "1rem", fontWeight: 500, color: plan.highlight ? "#A0AEBF" : "#6B7A99" }}>/mês</span>
-              </div>
-              <p style={{ fontFamily: "Space Grotesk, sans-serif", color: plan.highlight ? "#A0AEBF" : "#6B7A99", fontSize: "0.9rem", marginBottom: 28, marginTop: 6 }}>{plan.tagline}</p>
-              <a href={plan.ctaUrl} style={{ display: "block", textAlign: "center", background: plan.highlight ? "#5DC93E" : "transparent", color: plan.highlight ? "#0F1A35" : "#1A2547", border: plan.highlight ? "none" : "2px solid #1A2547", padding: "14px 24px", borderRadius: 12, fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, fontSize: "0.9375rem", textDecoration: "none", marginBottom: 28, transition: "transform 0.2s, box-shadow 0.2s, background 0.2s" }}
-                onMouseEnter={(e) => { if (plan.highlight) { e.currentTarget.style.transform = "scale(1.03)"; e.currentTarget.style.boxShadow = "0 0 20px rgba(93,201,62,0.4)"; } else { e.currentTarget.style.background = "#1A2547"; e.currentTarget.style.color = "#fff"; } }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "none"; if (!plan.highlight) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#1A2547"; } }}>
-                {plan.cta}
-              </a>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-                {plan.features.map((feat) => (
-                  <li key={feat} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                    <Check size={16} color="#5DC93E" style={{ flexShrink: 0, marginTop: 2 }} />
-                    <span style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "0.9rem", color: plan.highlight ? "#A0AEBF" : "#6B7A99", lineHeight: 1.5 }}>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+
+        {/* Single Creator plan — centered */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <motion.div variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"}
+            style={{ background: "#1A2547", borderRadius: 20, border: "2px solid #5DC93E", padding: "48px 40px", maxWidth: 480, width: "100%", boxShadow: "0 0 60px rgba(93,201,62,0.2), 0 20px 60px rgba(26,37,71,0.3)" }}
+            whileHover={{ boxShadow: "0 0 80px rgba(93,201,62,0.3), 0 24px 64px rgba(26,37,71,0.35)" }}>
+            <div style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, fontSize: "0.875rem", color: "#5DC93E", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 16 }}>Creator</div>
+            <div style={{ display: "flex", alignItems: "flex-end", gap: 4, marginBottom: 6 }}>
+              <span style={{ fontFamily: "Nunito, sans-serif", fontWeight: 900, fontSize: "3.5rem", color: "#fff", lineHeight: 1 }}>R$97</span>
+              <span style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 500, fontSize: "1rem", color: "#A0AEBF", marginBottom: 8 }}>/mês</span>
+            </div>
+            <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#A0AEBF", fontSize: "0.9375rem", marginBottom: 32 }}>Para criadores independentes</p>
+            <a href={CONFIG.ctaUrl}
+              style={{ display: "block", textAlign: "center", background: "#5DC93E", color: "#0F1A35", padding: "16px 24px", borderRadius: 12, fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, fontSize: "1rem", textDecoration: "none", marginBottom: 36, transition: "transform 0.2s, box-shadow 0.2s" }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.03)"; e.currentTarget.style.boxShadow = "0 0 24px rgba(93,201,62,0.5)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "none"; }}>
+              Começar grátis por {CONFIG.trialDays} dias
+            </a>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14 }}>
+              {["Pipeline ilimitado de campanhas", "Media Kit dinâmico com link público", "Controle financeiro completo", "Gestão de contratos", "Suporte por chat"].map((feat) => (
+                <li key={feat} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                  <Check size={17} color="#5DC93E" style={{ flexShrink: 0, marginTop: 2 }} />
+                  <span style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "0.9375rem", color: "#A0AEBF", lineHeight: 1.5 }}>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
-        <motion.div variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"} style={{ display: "flex", gap: 32, justifyContent: "center", flexWrap: "wrap", marginTop: 48, padding: "32px", background: "#fff", borderRadius: 16, border: "1.5px solid #E2E8F0" }}>
+
+        <motion.div variants={fadeUp} initial="hidden" animate={inView ? "visible" : "hidden"}
+          style={{ display: "flex", gap: 32, justifyContent: "center", flexWrap: "wrap", marginTop: 40 }}>
           {[
-            { icon: <Shield size={18} color="#5DC93E" />, text: "Garantia de 30 dias. Se não gostar, devolvemos 100%." },
             { icon: <CreditCard size={18} color="#5DC93E" />, text: "Sem cartão de crédito para começar." },
             { icon: <X size={18} color="#5DC93E" />, text: "Cancele quando quiser, sem multa." },
           ].map((item, i) => (
@@ -731,13 +707,12 @@ function Footer() {
             <Image src="/logo.png" alt="PIVO" width={80} height={32} style={{ objectFit: "contain", filter: "brightness(0) invert(1)", marginBottom: 16 }} />
             <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#6B7A99", fontSize: "0.9375rem", lineHeight: 1.6, maxWidth: 240, marginBottom: 24 }}>Você é uma empresa. Opere como uma.</p>
             <div style={{ display: "flex", gap: 12 }}>
-              {[{ icon: <Instagram size={18} />, label: "Instagram" }, { icon: <Linkedin size={18} />, label: "LinkedIn" }].map((s) => (
-                <a key={s.label} href="#" aria-label={s.label} style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#6B7A99", textDecoration: "none", transition: "color 0.2s, background 0.2s" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = "#5DC93E"; e.currentTarget.style.background = "rgba(93,201,62,0.1)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = "#6B7A99"; e.currentTarget.style.background = "rgba(255,255,255,0.06)"; }}>
-                  {s.icon}
-                </a>
-              ))}
+              <a href="https://www.instagram.com/pivo.crm/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do PIVO"
+                style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#6B7A99", textDecoration: "none", transition: "color 0.2s, background 0.2s" }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = "#5DC93E"; e.currentTarget.style.background = "rgba(93,201,62,0.1)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "#6B7A99"; e.currentTarget.style.background = "rgba(255,255,255,0.06)"; }}>
+                <Instagram size={18} />
+              </a>
             </div>
           </div>
           {cols.map((col) => (
