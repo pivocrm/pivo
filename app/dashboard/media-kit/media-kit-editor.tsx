@@ -390,7 +390,10 @@ export function MediaKitEditor({ initialMediaKit: mk, profile, userId }: Props) 
       const { error } = await supabase.storage.from("media-kit").upload(path, file, { upsert: true });
       if (error) throw error;
       const { data } = supabase.storage.from("media-kit").getPublicUrl(path);
-      set("profileImageUrl", data.publicUrl + "?t=" + Date.now());
+      const url = data.publicUrl + "?t=" + Date.now();
+      set("profileImageUrl", url);
+      // Sync to user profile avatar
+      await supabase.from("users").update({ avatar_url: url }).eq("id", userId);
     } catch {
       toast({ variant: "destructive", title: "Erro ao fazer upload da foto" });
     } finally {
