@@ -46,7 +46,7 @@ export function Sidebar({ user, onClose }: SidebarProps) {
   const isAdmin = user.email === ADMIN_EMAIL;
   const trialDays = user.trial_ends_at ? getDaysRemaining(user.trial_ends_at) : 0;
   const isTrialActive = trialDays > 0 && user.plan === "creator" && !isAdmin;
-  const trialProgress = Math.max(0, Math.min(100, (trialDays / 14) * 100));
+  const trialProgress = Math.max(0, Math.min(100, (trialDays / 7) * 100));
 
   const initials = user.name
     .split(" ")
