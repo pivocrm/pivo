@@ -60,27 +60,38 @@ export function DashboardShell({ user, children }: DashboardShellProps) {
           <Image src="/logo.png" alt="Pivo" width={72} height={36} className="object-contain" />
         </header>
 
-        {/* Trial expired banner */}
-        {trialExpired && (
-          <div className="bg-[#1A2547] text-white px-4 py-3 flex items-center justify-between gap-4 flex-wrap">
-            <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-[#5DC93E] flex-shrink-0" />
-              <span className="text-sm font-semibold">Seu trial gratuito expirou. Faça o upgrade do seu plano para continuar usando o Pivo.</span>
-            </div>
-            <a
-              href="mailto:pivocrm@gmail.com?subject=Upgrade de plano"
-              className="bg-[#5DC93E] text-[#1A2547] text-xs font-bold px-4 py-1.5 rounded-full hover:bg-[#4db534] transition-colors flex-shrink-0"
-            >
-              Fazer upgrade
-            </a>
-          </div>
-        )}
-
         {/* Page content */}
         <main className="flex-1 p-4 lg:p-8">
           {children}
         </main>
       </div>
+
+      {/* Trial expired — full-screen block */}
+      {trialExpired && (
+        <div className="fixed inset-0 z-[100] bg-[#1A2547]/80 backdrop-blur-sm flex items-center justify-center p-6">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 text-center">
+            <div className="w-16 h-16 bg-[#5DC93E]/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
+              <Zap className="w-8 h-8 text-[#5DC93E]" />
+            </div>
+            <h2 className="font-nunito text-2xl font-black text-[#1A2547] mb-2">
+              Seu trial expirou
+            </h2>
+            <p className="text-[#5A6A82] text-sm leading-relaxed mb-6">
+              Os 7 dias de teste gratuito chegaram ao fim.<br />
+              Faça o upgrade para continuar usando o Pivo e não perder nenhuma campanha ou dado.
+            </p>
+            <a
+              href="mailto:pivocrm@gmail.com?subject=Quero fazer upgrade do Pivo"
+              className="block w-full bg-[#5DC93E] text-[#1A2547] font-bold text-base py-3.5 rounded-2xl hover:bg-[#4db534] transition-colors"
+            >
+              Fazer upgrade agora
+            </a>
+            <p className="text-xs text-[#8A9BBE] mt-4">
+              Entre em contato e ativamos seu plano em minutos.
+            </p>
+          </div>
+        </div>
+      )}
 
       <Toaster />
     </div>

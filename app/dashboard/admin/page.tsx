@@ -103,6 +103,22 @@ export default async function AdminPage() {
             <tbody className="divide-y divide-[#F0F7ED]">
               {rows.map((row) => {
                 const trialActive = row.trial_ends_at && new Date(row.trial_ends_at) > new Date();
+                const upgraded = row.plan !== "creator";
+                const cancelled = !trialActive && !upgraded && row.trial_ends_at;
+
+                let statusBadge;
+                if (!row.confirmed) {
+                  statusBadge = <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-500">Pendente</span>;
+                } else if (trialActive) {
+                  statusBadge = <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">Trial ativo</span>;
+                } else if (upgraded) {
+                  statusBadge = <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[#E8F5E4] text-[#2D7A1A]">Confirmado</span>;
+                } else if (cancelled) {
+                  statusBadge = <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-600">Cancelado</span>;
+                } else {
+                  statusBadge = <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[#E8F5E4] text-[#2D7A1A]">Confirmado</span>;
+                }
+
                 return (
                   <tr key={row.id} className="hover:bg-[#F8FDF6] transition-colors">
                     <td className="px-4 py-3 font-medium text-[#1A2547]">{row.name}</td>
@@ -115,17 +131,7 @@ export default async function AdminPage() {
                     </td>
                     <td className="px-4 py-3 text-[#5A6A82]">{formatDate(row.created_at)}</td>
                     <td className="px-4 py-3 text-[#5A6A82]">{row.last_sign_in ? formatDate(row.last_sign_in) : "—"}</td>
-                    <td className="px-4 py-3">
-                      {row.confirmed ? (
-                        trialActive ? (
-                          <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">Trial ativo</span>
-                        ) : (
-                          <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[#E8F5E4] text-[#2D7A1A]">Confirmado</span>
-                        )
-                      ) : (
-                        <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-500">Pendente</span>
-                      )}
-                    </td>
+                    <td className="px-4 py-3">{statusBadge}</td>
                   </tr>
                 );
               })}
